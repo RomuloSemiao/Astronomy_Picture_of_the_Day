@@ -16,15 +16,20 @@ const PictureOfTheDay = () => {
     const formattedDate = date.toLocaleDateString();
 
     useEffect(() => {
-        axios
-            .get(
-                "https://api.nasa.gov/planetary/apod?api_key=YjlcVhv3Fbg1ocyXeMucfxmA7VpUt3pi1GpahSSj"
-            )
-            .then(function (response) {
+        fetch(
+            "https://api.nasa.gov/planetary/apod?api_key=YjlcVhv3Fbg1ocyXeMucfxmA7VpUt3pi1GpahSSj"
+        )
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error("Network response was not ok");
+                }
+                return response.json();
+            })
+            .then((data) => {
                 setDataPicture({
-                    autor: response.data.copyright,
-                    image: response.data.url,
-                    title: response.data.title,
+                    autor: data.copyright,
+                    image: data.url,
+                    title: data.title,
                 });
             })
             .catch(function (error) {
