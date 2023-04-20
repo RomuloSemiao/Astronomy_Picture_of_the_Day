@@ -1,31 +1,66 @@
 .PictureOfTheDay {
     position: relative;
-}
 
-.PictureOfTheDay__image {
-    display: block;
-    height: auto;
-    width: 100%;
-    filter: brightness(0.6);
-}
+    &__image {
+        display: block;
+        height: 100vh;
+        width: 100%;
+        object-fit: cover;
+        filter: brightness(0.6);
+    }
 
-.PictureOfTheDay__description {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    max-width: 600px;
-    width: 100%;
-    font-family: "Poppins";
-    font-style: normal;
-    font-weight: 500;
-    font-size: 17.9928px;
-    line-height: 27px;
-    text-align: center;
-    color: #eae1c8;
-}
+    &__date {
+        position: absolute;
+        right: 30px;
+        top: 15px;
+        font-family: "Poppins";
+        font-style: normal;
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 27px;
+        text-align: center;
+        color: #ffffff;
+    }
 
-.PictureOfTheDay__description {
-    position: absolute;
-    left: 0;
-    bottom: 0;
+    &__photo-properties {
+        position: absolute;
+        right: 50%;
+        bottom: 25%;
+        transform: translate(50%, 25%);
+        font-family: "Poppins";
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 27px;
+        text-align: center;
+        color: #ffffff;
+    }
+
+    &__bottom {
+        position: absolute;
+        right: 30px;
+        bottom: 15px;
+        display: flex;
+        justify-content: right;
+        gap: 15px;
+    }
+
+    &__link-linkedin,
+    &__link-github,
+    &__link-image,
+    &__link-api {
+        font-family: "Poppins";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 27px;
+        text-align: center;
+        color: #ffffff;
+        text-decoration: none;
+        transition: all 0.2s linear;
+
+        &:hover {
+            filter: brightness(0.8);
+        }
+    }
 }

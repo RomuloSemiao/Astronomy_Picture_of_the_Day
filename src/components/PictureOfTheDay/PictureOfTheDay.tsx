@@ -5,15 +5,15 @@ import "./style.scss";
 
 interface IDataPicture {
     autor: string;
-    day: string;
-    description: string;
     image: string;
     title: string;
 }
 
 const PictureOfTheDay = () => {
     const [dataPicture, setDataPicture] = useState<IDataPicture>();
-    const [isLoading, setIsLoading] = useState(true);
+
+    const date = new Date(); // Get the current date
+    const formattedDate = date.toLocaleDateString();
 
     useEffect(() => {
         axios
@@ -23,20 +23,14 @@ const PictureOfTheDay = () => {
             .then(function (response) {
                 setDataPicture({
                     autor: response.data.copyright,
-                    day: response.data.date,
-                    description: response.data.explanation,
-                    image: response.data.hdurl,
+                    image: response.data.url,
                     title: response.data.title,
                 });
-                setIsLoading(false);
             })
             .catch(function (error) {
                 console.log(error);
-                setIsLoading(false);
             });
     }, []);
-
-    isLoading && <>...Loading</>;
 
     return (
         <div className="PictureOfTheDay">
@@ -45,12 +39,40 @@ const PictureOfTheDay = () => {
                 src={dataPicture?.image}
                 alt={dataPicture?.title}
             />
-            <p className="PictureOfTheDay__description">
-                {dataPicture?.description}
-            </p>
+            <p className="PictureOfTheDay__date">{formattedDate}</p>
             <p className="PictureOfTheDay__photo-properties">
-                {dataPicture?.title} - {dataPicture?.autor}
+                <em>"{dataPicture?.title}"</em> - {dataPicture?.autor}
             </p>
+            <div className="PictureOfTheDay__bottom">
+                <a
+                    className="PictureOfTheDay__link-linkedin"
+                    href="https://www.linkedin.com/in/romulosemiao/"
+                    target="_blank"
+                >
+                    DEV
+                </a>
+                <a
+                    className="PictureOfTheDay__link-github"
+                    href="https://github.com/RomuloSemiao"
+                    target="_blank"
+                >
+                    Github
+                </a>
+                <a
+                    className="PictureOfTheDay__link-image"
+                    href={dataPicture?.image}
+                    target="_blank"
+                >
+                    Picture
+                </a>
+                <a
+                    className="PictureOfTheDay__link-api"
+                    href="https://api.nasa.gov/"
+                    target="_blank"
+                >
+                    API
+                </a>
+            </div>
         </div>
     );
 };
