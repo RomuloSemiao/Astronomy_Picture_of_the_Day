@@ -1,0 +1,31 @@
+.PictureOfTheDay {
+    position: relative;
+}
+
+.PictureOfTheDay__image {
+    display: block;
+    height: auto;
+    width: 100%;
+    filter: brightness(0.6);
+}
+
+.PictureOfTheDay__description {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    max-width: 600px;
+    width: 100%;
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 17.9928px;
+    line-height: 27px;
+    text-align: center;
+    color: #eae1c8;
+}
+
+.PictureOfTheDay__description {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}

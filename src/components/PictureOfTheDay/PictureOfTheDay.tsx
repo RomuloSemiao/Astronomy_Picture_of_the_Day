@@ -1,6 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 
+import "./style.scss";
+
 interface IDataPicture {
     autor: string;
     day: string;
@@ -37,9 +39,19 @@ const PictureOfTheDay = () => {
     isLoading && <>...Loading</>;
 
     return (
-        <>
-            <img src={dataPicture?.image} alt={dataPicture?.title} />
-        </>
+        <div className="PictureOfTheDay">
+            <img
+                className="PictureOfTheDay__image"
+                src={dataPicture?.image}
+                alt={dataPicture?.title}
+            />
+            <p className="PictureOfTheDay__description">
+                {dataPicture?.description}
+            </p>
+            <p className="PictureOfTheDay__photo-properties">
+                {dataPicture?.title} - {dataPicture?.autor}
+            </p>
+        </div>
     );
 };
 
